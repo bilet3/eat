@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EAT! — Онлайн заказ и доставка еды</title>
-    <!-- Bootstrap CSS (только для шапки и карточек) -->
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Кастомные стили (переопределяют Bootstrap при необходимости) -->
+    <!-- Кастомные стили -->
     <link rel="stylesheet" href="style.css">
+	<link rel="icon" type="image/png" href="pic/favi.png">
 </head>
 <body>
 
-    <!-- ШАПКА НА BOOTSTRAP -->
+    <!-- ШАПКА (Bootstrap Navbar) -->
     <nav class="navbar navbar-expand-md bg-custom-cream border-bottom border-dark sticky-top py-3 px-4">
         <div class="container-fluid">
             <a class="navbar-brand p-0 m-0" href="#">
@@ -32,8 +33,8 @@
         </div>
     </nav>
 
-    <!-- ПЕРВЫЙ ЭКРАН (полностью кастомный) -->
-    <div class="first-screen">
+    <!-- ПЕРВЫЙ ЭКРАН (кастомный, без Bootstrap) -->
+    <div class="first-screen container-fluid px-0">
         <div class="marquee-container marquee-top" id="marqueeTop">
             <div class="marquee-track" id="trackTop"></div>
         </div>
@@ -47,179 +48,199 @@
         </div>
     </div>
 
-    <!-- ВТОРОЙ ЭКРАН (кастомный) -->
+    <!-- ВТОРОЙ ЭКРАН -->
     <section class="second-screen">
-        <div class="section-header">
-            <h2>ОНЛАЙН ЗАКАЗ<br>И ДОСТАВКА ЕДЫ<br><span>В САНКТ-ПЕТЕРБУРГЕ</span></h2>
-        </div>
-        <div class="section-subhead">
-            Все скидки и акции от ресторанов в одном месте<br>
-            <span class="red-text">на сервисе Eat! Зарабатывайте со вкусом.</span>
-        </div>
-        <div class="full-image">
-            <img src="pic/image 5.jpg" alt="Еда" style="border-radius: 16px; width: 100%;">
-        </div>
-    </section>
-
-    <!-- ЧТО ТАКОЕ EAT? (кастомный) -->
-    <section class="two-col-section">
-        <div class="section-header">
-            <h2>Что такое <span>EAT?</span></h2>
-        </div>
-        <div class="grid-2">
-            <div class="block red-bg">
-                <div class="what-text">
-                    <p style="font-size: 24px; margin-bottom: 20px; color: var(--white);">Приложение, которое объединило лучшее, что есть в мире:</p>
-                    <div class="what-text-big" style="color: var(--white);">
-                        Еду,<br>Любовь<br>и Деньги
+        <div class="container-fluid px-3 px-md-4">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-header">
+                        <h2 class="display-1 text-uppercase fw-medium text-dark">ОНЛАЙН ЗАКАЗ<br>И ДОСТАВКА ЕДЫ<br><span class="text-red">В САНКТ-ПЕТЕРБУРГЕ</span></h2>
                     </div>
-                </div>
-            </div>
-            <div class="block" style="background: none; padding: 0;">
-                <img src="pic/Rectangle 10.jpg" alt="Еда" style="border-radius: 16px;">
-            </div>
-        </div>
-    </section>
-
-    <!-- ЗАРАБАТЫВАЙТЕ (кастомный) -->
-    <section class="two-col-section">
-        <div class="section-header has-subhead">
-            <h2><span>ЗАРАБАТЫВАЙТЕ</span></h2>
-        </div>
-        <div class="section-subhead">
-            на посещениях ресторанов и заказе доставки
-        </div>
-        <div class="grid-2">
-            <div class="earn-image">
-                <img src="pic/Rectangle 17.jpg" alt="Еда" style="border-radius: 16px; height: 100%;">
-            </div>
-            <div class="block red-bg earn-number-block">
-                <div class="earn-percent">+10%</div>
-                <div class="earn-desc">от каждого заказа на ваш счёт!</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- КАК РАБОТАЕТ ПРИЛОЖЕНИЕ? (кастомный) -->
-    <section class="two-col-section">
-        <div class="section-header">
-            <h2><span>КАК РАБОТАЕТ</span> ПРИЛОЖЕНИЕ?</h2>
-        </div>
-        <div class="how-grid">
-            <div class="left-col">
-                <div class="block red-bg">
-                    <div class="block-content">
-                        <p style="font-size: 24px; font-weight: 700; margin-bottom: 16px;">Вы делаете:</p>
-                        <p style="font-size: 24px;">— сканирование чека в ресторане,</p>
-                        <p style="font-size: 24px;">— заказываете доставку</p>
-                        <p style="font-size: 24px;">— и получаете нашу любовь в виде внутренней валюты</p>
+                    <div class="section-subhead">
+                        <p class="fs-2 fw-bold text-dark mb-0">Все скидки и акции от ресторанов в одном месте<br>
+                        <span class="text-red">на сервисе Eat! Зарабатывайте со вкусом.</span></p>
                     </div>
-                </div>
-                <div class="block red-bg">
-                    <div class="block-content bonus-text">
-                        Получайте дополнительные баллы за репосты, опросы и многое другое!
-                    </div>
-                </div>
-            </div>
-            <div class="right-col">
-                <div class="block dark-bg flex-between">
-                    <div class="block-content">
-                        <p style="font-size: 24px; font-weight: 700; margin-bottom: 16px;">Копите баллы и оплачивайте ими:</p>
-                    </div>
-                    <div class="block-content">
-                        <div class="percent-large">— ДО 40%</div>
-                        <div class="percent-desc">счёта на доставку</div>
-                        <div class="percent-large" style="margin-top: 20px;">— ДО 50%</div>
-                        <div class="percent-desc">при заказе в ресторанах приложения</div>
+                    <div class="full-image mt-5">
+                        <img src="pic/image 5.jpg" alt="Еда" class="w-100 h-100 object-fit-cover rounded-4">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ХОТИТЕ ПОПРОБОВАТЬ? (кастомный) -->
-    <section class="two-col-section">
-        <div class="section-header has-subhead">
-            <h2>Хотите<br>попробовать?<br><span>СКАЧАЙТЕ EAT!</span></h2>
-        </div>
-        <div class="section-subhead">
-            За регистрацию в приложении<br><span class="red-text">мы дарим 300 баллов!</span>
-        </div>
-        <div class="cta-grid">
-            <div class="block" style="background: none; padding: 0;">
-                <img src="pic/image 6.jpg" alt="Телефон" style="border-radius: 16px;">
+    <!-- ЧТО ТАКОЕ EAT? -->
+    <section>
+        <div class="container-fluid px-3 px-md-4">
+            <div class="section-header">
+                <h2 class="display-2 text-uppercase fw-medium">Что такое <span class="text-red">EAT?</span></h2>
             </div>
-            <div class="cta-download">
-                <div class="download-label">Скачать:</div>
-                <div class="stores">
-                    <a href="#">AppStore</a>
-                    <a href="#">Google Play</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- РЕСТОРАНЫ (Bootstrap карточки) -->
-    <section class="two-col-section">
-        <div class="section-header">
-            <h2>Рестораны в <span>EAT!</span></h2>
-        </div>
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="col">
-                <div class="card restaurant-card h-100 border-0 rounded-4 overflow-hidden">
-                    <img src="pic/rest1.jpg" class="card-img-top" alt="Ресторан 1" style="height: 200px; object-fit: cover;">
-                    <div class="card-body bg-custom-cream">
-                        <h5 class="card-title fw-medium text-uppercase">Название</h5>
-                        <p class="card-text fw-bold text-secondary">адрес</p>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="block red-bg rounded-4 p-4 h-100 d-flex flex-column justify-content-between what-block">
+                        <p class="fs-2 fw-bold text-white">Приложение, которое объединило лучшее, что есть в мире:</p>
+                        <div class="what-text-big text-white align-self-start">
+                            Еду,<br>Любовь<br>и Деньги
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col">
-                <div class="card restaurant-card h-100 border-0 rounded-4 overflow-hidden">
-                    <img src="pic/rest2.jpg" class="card-img-top" alt="Ресторан 2" style="height: 200px; object-fit: cover;">
-                    <div class="card-body bg-custom-cream">
-                        <h5 class="card-title fw-medium text-uppercase">Название</h5>
-                        <p class="card-text fw-bold text-secondary">адрес</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card restaurant-card h-100 border-0 rounded-4 overflow-hidden">
-                    <img src="pic/rest3.jpg" class="card-img-top" alt="Ресторан 3" style="height: 200px; object-fit: cover;">
-                    <div class="card-body bg-custom-cream">
-                        <h5 class="card-title fw-medium text-uppercase">Название</h5>
-                        <p class="card-text fw-bold text-secondary">адрес</p>
+                <div class="col-md-6">
+                    <div class="block p-0 h-100">
+                        <img src="pic/Rectangle 10.jpg" alt="Еда" class="w-100 h-100 rounded-4 object-fit-cover">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ПОДВАЛ (кастомный) -->
-    <footer>
+    <!-- ЗАРАБАТЫВАЙТЕ -->
+    <section>
+        <div class="container-fluid px-3 px-md-4">
+            <div class="section-header has-subhead">
+                <h2 class="display-2 text-uppercase fw-medium"><span class="text-red">ЗАРАБАТЫВАЙТЕ</span></h2>
+            </div>
+            <div class="section-subhead">
+                <p class="fs-2 fw-bold text-dark">на посещениях ресторанов и заказе доставки</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="earn-image rounded-4 overflow-hidden">
+                        <img src="pic/Rectangle 17.jpg" alt="Еда" class="w-100 h-100 object-fit-cover">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="block red-bg rounded-4 p-4 h-100 d-flex flex-column justify-content-between align-items-start">
+                        <div class="earn-percent">+10%</div>
+                        <div class="earn-desc fs-2 text-white">от каждого заказа на ваш счёт!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- КАК РАБОТАЕТ ПРИЛОЖЕНИЕ? -->
+    <section>
+        <div class="container-fluid px-3 px-md-4">
+            <div class="section-header">
+                <h2 class="display-2 text-uppercase fw-medium"><span class="text-red">КАК РАБОТАЕТ</span> ПРИЛОЖЕНИЕ?</h2>
+            </div>
+            <div class="row g-4">
+                <!-- Левая колонка с двумя блоками -->
+                <div class="col-md-6 d-flex flex-column gap-4">
+                    <div class="block red-bg rounded-4 p-4 flex-grow-1">
+                        <p class="fs-2 fw-bold mb-4">Вы делаете:</p>
+                        <p class="fs-2">— сканирование чека в ресторане,</p>
+                        <p class="fs-2">— заказываете доставку</p>
+                        <p class="fs-2">— и получаете нашу любовь в виде внутренней валюты</p>
+                    </div>
+                    <div class="block red-bg rounded-4 p-4">
+                        <p class="fs-2 fw-bold mb-0">Получайте дополнительные баллы за репосты, опросы и многое другое!</p>
+                    </div>
+                </div>
+                <!-- Правая колонка (один блок) -->
+                <div class="col-md-6">
+                    <div class="block dark-bg rounded-4 p-4 h-100 d-flex flex-column justify-content-between">
+                        <p class="fs-2 fw-bold">Копите баллы и оплачивайте ими:</p>
+                        <div>
+                            <div class="percent-large text-white">— ДО 40%</div>
+                            <div class="percent-desc fs-2 text-white">счёта на доставку</div>
+                            <div class="percent-large text-white mt-4">— ДО 50%</div>
+                            <div class="percent-desc fs-2 text-white">при заказе в ресторанах приложения</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ХОТИТЕ ПОПРОБОВАТЬ? -->
+    <section>
+        <div class="container-fluid px-3 px-md-4">
+            <div class="section-header has-subhead">
+                <h2 class="display-2 text-uppercase fw-medium">Хотите<br>попробовать?<br><span class="text-red">СКАЧАЙТЕ EAT!</span></h2>
+            </div>
+            <div class="section-subhead">
+                <p class="fs-2 fw-bold text-dark">За регистрацию в приложении<br><span class="text-red">мы дарим 300 баллов!</span></p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="block p-0 h-100">
+                        <img src="pic/image 6.jpg" alt="Телефон" class="w-100 h-100 rounded-4 object-fit-cover">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="cta-download dark-bg rounded-4 p-4 d-flex flex-column justify-content-between align-items-start h-100">
+                        <div class="download-label display-1 text-white text-uppercase">Скачать:</div>
+                        <div class="stores">
+                            <a href="#" class="d-block fs-1 text-white text-uppercase text-decoration-underline mb-2">AppStore</a>
+                            <a href="#" class="d-block fs-1 text-white text-uppercase text-decoration-underline">Google Play</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- РЕСТОРАНЫ (Bootstrap Card) -->
+    <section>
+        <div class="container-fluid px-3 px-md-4">
+            <div class="section-header">
+                <h2 class="display-2 text-uppercase fw-medium">Рестораны в <span class="text-red">EAT!</span></h2>
+            </div>
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col">
+                    <div class="card restaurant-card h-100 border-0 overflow-hidden">
+                        <img src="pic/rest1.jpg" class="card-img-top" alt="Ресторан 1" style="height: 200px; object-fit: cover;">
+                        <div class="card-body p-0 pt-3">
+                            <h5 class="card-title fw-medium text-uppercase mb-1">Название</h5>
+                            <p class="card-text fw-bold text-secondary mb-0">адрес</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card restaurant-card h-100 border-0 overflow-hidden">
+                        <img src="pic/rest2.jpg" class="card-img-top" alt="Ресторан 2" style="height: 200px; object-fit: cover;">
+                        <div class="card-body p-0 pt-3">
+                            <h5 class="card-title fw-medium text-uppercase mb-1">Название</h5>
+                            <p class="card-text fw-bold text-secondary mb-0">адрес</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card restaurant-card h-100 border-0 overflow-hidden">
+                        <img src="pic/rest3.jpg" class="card-img-top" alt="Ресторан 3" style="height: 200px; object-fit: cover;">
+                        <div class="card-body p-0 pt-3">
+                            <h5 class="card-title fw-medium text-uppercase mb-1">Название</h5>
+                            <p class="card-text fw-bold text-secondary mb-0">адрес</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПОДВАЛ -->
+    <footer class="bg-custom-cream py-4 px-5 d-flex flex-wrap justify-content-between align-items-center">
         <div class="footer-left">
-            <div class="footer-logo">
-                <img src="pic/logo f.svg" alt="EAT!" width="273" height="87">
-            </div>
+            <img src="pic/logo f.svg" alt="EAT!" width="273" height="87" class="d-block">
         </div>
-        <div class="footer-info">
-            <div>© 2026</div>
-            <div>поддержка: <a href="mailto:support@eat.ru">support@eat.ru</a></div>
+        <div class="footer-info text-center">
+            <div class="fw-bold">© 2026</div>
+            <div class="fw-bold">поддержка: <a href="mailto:support@eat.ru" class="text-red text-decoration-none">support@eat.ru</a></div>
         </div>
-        <div class="footer-right">
-            <div class="footer-apps">
-                <a href="#">AppStore</a>
-                <a href="#">Google Play</a>
+        <div class="footer-right d-flex flex-column align-items-end gap-3">
+            <div class="footer-apps d-flex gap-4">
+                <a href="#" class="text-red text-uppercase fw-medium text-decoration-none">AppStore</a>
+                <a href="#" class="text-red text-uppercase fw-medium text-decoration-none">Google Play</a>
             </div>
-            <div class="footer-social">
-                <a href="#">VK</a>
-                <a href="#">TG</a>
-                <a href="#">TikTok</a>
+            <div class="footer-social d-flex gap-4">
+                <a href="#" class="text-red text-uppercase fw-medium text-decoration-none">VK</a>
+                <a href="#" class="text-red text-uppercase fw-medium text-decoration-none">TG</a>
+                <a href="#" class="text-red text-uppercase fw-medium text-decoration-none">TikTok</a>
             </div>
         </div>
     </footer>
 
-    <!-- Bootstrap JS (для работы бургер-меню и навигации) -->
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Кастомный JS -->
     <script src="script.js"></script>
