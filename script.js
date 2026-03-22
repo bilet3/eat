@@ -1,4 +1,4 @@
-// Анимация бегущих строк
+// ========== Анимация бегущих строк ==========
 (function() {
     const word = 'EAT!';
     const repeatCount = 10;
@@ -10,32 +10,34 @@
 
     const trackTop = document.getElementById('trackTop');
     const trackBottom = document.getElementById('trackBottom');
-    trackTop.innerHTML = doubleContent;
-    trackBottom.innerHTML = doubleContent;
+    if (trackTop && trackBottom) {
+        trackTop.innerHTML = doubleContent;
+        trackBottom.innerHTML = doubleContent;
 
-    let offsetTop = 0;
-    let offsetBottom = -trackBottom.scrollWidth / 2;
-    const speed = 2;
+        let offsetTop = 0;
+        let offsetBottom = -trackBottom.scrollWidth / 2;
+        const speed = 2;
 
-    function step() {
-        offsetTop -= speed;
-        if (offsetTop <= -trackTop.scrollWidth / 2) {
-            offsetTop = 0;
+        function step() {
+            offsetTop -= speed;
+            if (offsetTop <= -trackTop.scrollWidth / 2) {
+                offsetTop = 0;
+            }
+            trackTop.style.transform = `translateX(${offsetTop}px)`;
+
+            offsetBottom -= speed;
+            if (offsetBottom <= -trackBottom.scrollWidth) {
+                offsetBottom = -trackBottom.scrollWidth / 2;
+            }
+            trackBottom.style.transform = `translateX(${offsetBottom}px)`;
+
+            requestAnimationFrame(step);
         }
-        trackTop.style.transform = `translateX(${offsetTop}px)`;
-
-        offsetBottom -= speed;
-        if (offsetBottom <= -trackBottom.scrollWidth) {
-            offsetBottom = -trackBottom.scrollWidth / 2;
-        }
-        trackBottom.style.transform = `translateX(${offsetBottom}px)`;
-
-        requestAnimationFrame(step);
+        step();
     }
-    step();
 })();
 
-// Плавное появление секций при скролле
+// ========== Плавное появление секций ==========
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -51,3 +53,61 @@ document.querySelectorAll('section').forEach(el => {
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     observer.observe(el);
 });
+
+// ========== ПОДКЛЮЧЕНИЕ К SUPABASE ==========
+const SUPABASE_URL = 'https://baxsvodhzgylczbmbufb.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_G20irQKnTp9XhGqhjEmrKQ_I-w9Lhhe';
+
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+async function loadRestaurants() {
+    const container = document.getElementById('restaurants-container');
+    
+    if (!container) {
+        console.error('Контейнер не найден');
+        return;
+    }
+    
+    try {
+        console.log('Загружаем рестораны...');
+        
+        const { data, error } = await supabaseClient
+            .from('restaurants')
+            .select('*')
+            .order('name');
+        
+        if (error) {
+            console.error('Ошибка:', error);
+            container.innerHTML = `<div class="col-12 text-center py-5"><p class="text-danger">Ошибка: ${error.message}</p></div>`;
+            return;
+        }
+        
+        console.log('Получено ресторанов:', data?.length || 0);
+        
+        if (!data || data.length === 0) {
+            container.innerHTML = `<div class="col-12 text-center py-5"><p>Нет ресторанов в базе данных</p></div>`;
+            return;
+        }
+        
+        const images = ['pic/rest1.jpg', 'pic/rest2.jpg', 'pic/rest3.jpg'];
+        
+        container.innerHTML = data.map((restaurant, index) => `
+            <div class="col">
+                <div class="card restaurant-card h-100 border-0 overflow-hidden">
+                    <img src="${images[index % images.length]}" class="card-img-top" alt="${restaurant.name}" style="height: 200px; object-fit: cover;">
+                    <div class="card-body p-0 pt-3">
+                        <h5 class="card-title fw-medium text-uppercase mb-1">${restaurant.name}</h5>
+                        <p class="card-text fw-bold text-secondary mb-0">${restaurant.address}</p>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+        
+    } catch (err) {
+        console.error('Критическая ошибка:', err);
+        container.innerHTML = `<div class="col-12 text-center py-5"><p class="text-danger">Ошибка: ${err.message}</p></div>`;
+    }
+}
+
+// Запускаем загрузку
+document.addEventListener('DOMContentLoaded', loadRestaurants);
