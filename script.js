@@ -71,9 +71,10 @@ async function loadRestaurants() {
     try {
         console.log('Загружаем рестораны...');
         
+        // Запрашиваем image_url вместе с остальными полями
         const { data, error } = await supabaseClient
             .from('restaurants')
-            .select('*')
+            .select('id, name, address, image_url') // добавляем image_url
             .order('name');
         
         if (error) {
@@ -89,19 +90,23 @@ async function loadRestaurants() {
             return;
         }
         
-        const images = ['pic/rest1.jpg', 'pic/rest2.jpg', 'pic/rest3.jpg'];
-        
-        container.innerHTML = data.map((restaurant, index) => `
-            <div class="col">
-                <div class="card restaurant-card h-100 border-0 overflow-hidden">
-                    <img src="${images[index % images.length]}" class="card-img-top" alt="${restaurant.name}" style="height: 200px; object-fit: cover;">
-                    <div class="card-body p-0 pt-3">
-                        <h5 class="card-title fw-medium text-uppercase mb-1">${restaurant.name}</h5>
-                        <p class="card-text fw-bold text-secondary mb-0">${restaurant.address}</p>
+        // Генерируем карточки, используя image_url из базы
+        container.innerHTML = data.map((restaurant) => {
+            // Если image_url не заполнен, используем заглушку
+            const imageUrl = restaurant.image_url || 'https://placehold.co/600x400?text=No+Image';
+            
+            return `
+                <div class="col">
+                    <div class="card restaurant-card h-100 border-0 overflow-hidden">
+                        <img src="${imageUrl}" class="card-img-top" alt="${restaurant.name}" style="height: 200px; object-fit: cover;">
+                        <div class="card-body p-0 pt-3">
+                            <h5 class="card-title fw-medium text-uppercase mb-1">${restaurant.name}</h5>
+                            <p class="card-text fw-bold text-secondary mb-0">${restaurant.address}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        `).join('');
+            `;
+        }).join('');
         
     } catch (err) {
         console.error('Критическая ошибка:', err);
