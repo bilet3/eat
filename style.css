@@ -299,7 +299,7 @@ section {
 
     /* Уменьшение заголовков через transform (оставляем как было) */
     h2 {
-        transform: scale(0.8);
+        transform: scale(0.7);
         transform-origin: left top;
         display: inline-block;
     }
